@@ -517,7 +517,7 @@ h1, h2, h3, h4 {
 }
 
 .couple-name {
-    font-family: 'Meddon', cursive !important;
+    font-family: 'Satisfy', cursive !important;
     font-weight: 400;
     font-style: normal;
 }
@@ -1240,7 +1240,7 @@ h1, h2, h3, h4 {
         <p class="parents">
            Mr. and Mrs. {{ profile.bride_father }} request the honor of your presence at the marriage of their daughter
         </p>
-        <h1>{{ profile.bride_name }}</h1>
+        <h1 class="couple-name">{{ profile.bride_name }}</h1>
 
     </div>
 
@@ -1249,7 +1249,7 @@ h1, h2, h3, h4 {
 
     <!-- Groom Details -->
     <div class="groom-details">
-        <h1>{{ profile.groom_name }}</h1>
+        <h1 class="couple-name">{{ profile.groom_name }}</h1>
 
         <p class="parents">
             S/o Mr. and Mrs. {{ profile.groom_father }}
