@@ -1,0 +1,1410 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+    --black: #111111;
+    --white: #ffffff;
+    --ivory: #f8f7f4;
+    --grey: #777777;
+    --border: #e5e5e5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+}
+
+.navbar {
+    background: #fff !important;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 27px;
+    color: var(--black) !important;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    color: var(--black) !important;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-left: 18px;
+}
+
+.nav-link:hover {
+    opacity: 0.5;
+}
+
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--ivory);
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 8vw, 90px);
+    line-height: 1.1;
+    letter-spacing: 1px;
+    margin: 25px 0;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: #555;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.section {
+    padding: 100px 20px;
+}
+
+.section-title {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 45px;
+    height: 1px;
+    background: #111;
+    margin: 20px auto 0;
+}
+
+.bg-light {
+    background: var(--ivory) !important;
+}
+
+.family-card,
+.detail-card {
+    background: white;
+    padding: 40px 30px;
+    border: 1px solid var(--border);
+    border-radius: 0;
+    height: 100%;
+    box-shadow: none;
+    text-align: center;
+}
+
+.family-card h3,
+.detail-card h3 {
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.family-card p,
+.detail-card p {
+    color: var(--grey);
+    font-size: 13px;
+}
+
+.btn-wedding {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    padding: 14px 32px;
+    border: 1px solid var(--black);
+    border-radius: 0;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+
+.btn-wedding:hover {
+    background: white;
+    color: black;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 0;
+    filter: brightness(75%) sepia(12%);
+    transition: 0.5s ease;
+}
+
+.gallery-img:hover {
+    filter: brightness(90%) sepia(5%);
+    transform: scale(1.01);
+}
+
+#gallery .col-md-4 {
+    overflow: hidden;
+}
+
+#venue {
+    text-align: center;
+}
+
+ footer {
+            background: #292720;
+            color: #eee8db;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 19px;
+            margin: 5px 0;
+        }
+
+        footer .footer-small {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            letter-spacing: 3px;
+            color: #c4b9a6;
+            text-transform: uppercase;
+        }
+
+
+/* Envelope opening screen */
+
+.envelope-screen {
+    position: fixed;
+    inset: 0;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.envelope {
+    background: white;
+    max-width: 520px;
+    width: 100%;
+    padding: 75px 35px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.envelope-icon {
+    font-size: 45px;
+    filter: grayscale(1);
+}
+
+.envelope-screen h2 {
+    font-size: 42px;
+    letter-spacing: 1px;
+    margin: 15px 0;
+}
+
+.envelope-screen p {
+    font-size: 12px;
+    color: #777;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 70vh;
+    }
+
+    .section {
+        padding: 65px 15px;
+    }
+
+    .section-title {
+        font-size: 38px;
+    }
+
+    .gallery-img {
+        height: 280px;
+    }
+
+    .nav-link {
+        margin-left: 0;
+    }
+}
+
+/* =========================================
+   BOHEMIAN WEDDING ENVELOPE INTRO
+========================================= */
+
+.envelope-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(ellipse at center, #f8f5ed 0%, #eee9df 75%, #e5dfd3 100%);
+
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+/* Subtle outer frame */
+
+.envelope-screen::before {
+    content: "";
+    position: absolute;
+    inset: 22px;
+
+    border: 1px solid rgba(80, 73, 61, 0.25);
+    pointer-events: none;
+}
+
+/* Intro heading */
+
+.intro-caption {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    color: #777064;
+    margin-bottom: 55px;
+    text-align: center;
+}
+
+/* Decorative details */
+
+.intro-decoration {
+    position: absolute;
+    color: #8d897b;
+    font-family: 'Cormorant Garamond', serif;
+    opacity: 0.65;
+}
+
+.intro-top {
+    top: 8%;
+    font-size: 55px;
+    transform: rotate(180deg);
+}
+
+.intro-bottom {
+    bottom: 7%;
+    font-size: 25px;
+}
+
+/* Envelope */
+
+.envelope-container {
+    position: relative;
+    width: 350px;
+    height: 225px;
+    flex-shrink: 0;
+    cursor: pointer;
+    perspective: 1200px;
+}
+
+/* Envelope base */
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    background: #e6dfd2;
+    border: 1px solid #c8bead;
+
+    box-shadow: 0 22px 45px rgba(48, 42, 32, 0.16);
+}
+
+/* Invitation card */
+
+.invitation-card {
+    position: absolute;
+    width: 86%;
+    height: 210px;
+    left: 7%;
+    bottom: 5px;
+
+    background: #fffdf7;
+    padding: 8px;
+    text-align: center;
+
+    /* Hide card behind envelope */
+    z-index: 0;
+
+    transform: translateY(0);
+    transition: transform 1.25s cubic-bezier(.2,.8,.2,1);
+}
+
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    background: #e6dfd2;
+    border: 1px solid #c8bead;
+    z-index: 1;
+}
+
+.envelope-front {
+    position: absolute;
+    inset: 0;
+    background: #f2ede3;
+
+    clip-path: polygon(
+        0 0,
+        50% 59%,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+
+    z-index: 4;
+}
+
+.envelope-flap {
+    position: absolute;
+    inset: 0;
+    background: #d8cfbf;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 59%
+    );
+
+    transform-origin: top center;
+    transition: transform 0.85s ease;
+    z-index: 5;
+}
+
+
+
+
+.card-border {
+    width: 100%;
+    height: 100%;
+
+    border: 1px solid #bcb19f;
+    outline: 1px solid #ded6c8;
+    outline-offset: -6px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px;
+}
+
+.card-ornament {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    line-height: 1;
+    color: #817967;
+    margin-bottom: 5px;
+}
+
+.card-small-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7px;
+    letter-spacing: 2px;
+    color: #827b6f;
+    margin-bottom: 8px;
+}
+
+.invitation-card h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 0.95;
+    color: #28251f;
+    margin: 2px 0;
+    overflow-wrap: anywhere;
+}
+
+.card-ampersand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: #8b806d;
+    line-height: 1;
+}
+
+.ornament-divider {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #8b806d;
+    font-size: 13px;
+    margin: 7px 0;
+}
+
+.ornament-divider span {
+    width: 25px;
+    height: 1px;
+    background: #c8bead;
+}
+
+.card-message {
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-size: 6px;
+    letter-spacing: 1px;
+    line-height: 1.8;
+    color: #777064;
+    margin: 0;
+}
+
+.card-bottom-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7px;
+    letter-spacing: 2px;
+    color: #514b40;
+    margin: 7px 0 0;
+}
+
+/* Explore button */
+
+.card-enter {
+    background: transparent;
+    border: 1px solid #817967;
+    color: #514b40;
+
+    padding: 6px 11px;
+    margin-top: 7px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7px;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card-enter:hover {
+    background: #292720;
+    color: #fffdf7;
+    border-color: #292720;
+}
+
+/* Envelope front folds */
+
+.envelope-front {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+
+    background: #f2ede3;
+
+    clip-path: polygon(
+        0 0,
+        50% 59%,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+}
+
+/* Envelope opening flap */
+
+.envelope-container.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope-container.open .envelope-seal {
+    opacity: 0;
+}
+
+
+
+/* Wax seal */
+
+.envelope-seal {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    z-index: 6;
+
+    width: 43px;
+    height: 43px;
+
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #302d26;
+    color: #eee8db;
+
+    border: 2px solid #a49a85;
+    outline: 1px solid #302d26;
+    outline-offset: 3px;
+
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+
+    transition: opacity 0.4s ease;
+}
+
+/* Opening animation */
+
+.envelope-container.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope-container.open .envelope-seal {
+    opacity: 0;
+}
+
+.envelope-container.open .invitation-card {
+    transform: translateY(-220px);
+    transition-delay: 0.4s;
+    z-index: 3;
+}
+
+/* Instruction */
+
+.envelope-instruction {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #817967;
+    margin-top: 55px;
+    text-align: center;
+}
+
+/* Hide intro after entering */
+
+.envelope-screen.hide-screen {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Mobile */
+
+@media (max-width: 450px) {
+
+    .envelope-screen::before {
+        inset: 12px;
+    }
+
+    .intro-caption {
+        font-size: 8px;
+        letter-spacing: 3px;
+        margin-bottom: 45px;
+    }
+
+    .envelope-container {
+        width: 290px;
+        height: 190px;
+    }
+
+    .invitation-card {
+        height: 175px;
+    }
+
+    .invitation-card h1 {
+        font-size: 25px;
+    }
+
+    .envelope-container.open .invitation-card {
+        transform: translateY(-180px);
+    }
+
+    .envelope-instruction {
+        font-size: 8px;
+        letter-spacing: 2px;
+        margin-top: 45px;
+    }
+
+    .intro-top {
+        top: 7%;
+        font-size: 40px;
+    }
+
+    .intro-bottom {
+        bottom: 5%;
+    }
+}
+
+
+
+
+/* Reveal and slide the card when envelope opens */
+
+.envelope-container.open .invitation-card {
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 3 !important;
+    transform: translateY(-220px);
+
+    transition:
+        transform 1.25s cubic-bezier(.2,.8,.2,1) 0.4s,
+        opacity 0.5s ease 0.4s,
+        visibility 0s linear 0.4s;
+}
+
+/* Mobile adjustment */
+
+@media (max-width: 450px) {
+    .envelope-container.open .invitation-card {
+        transform: translateY(-180px);
+    }
+}
+
+
+
+
+
+        /* =====================================
+   INVITATION CARD POP-UP ANIMATION
+===================================== */
+
+/* Initially hide the card inside the envelope */
+
+.envelope-container .invitation-card {
+    visibility: hidden;
+    opacity: 0;
+    z-index: 0;
+
+    transform: translateY(0);
+
+    transition: opacity 0.3s ease;
+}
+
+/* Envelope opens and card becomes visible */
+
+.envelope-container.open .invitation-card {
+    visibility: visible;
+    opacity: 1;
+    z-index: 3;
+
+    animation: invitationPop 2.2s ease-in-out 0.3s forwards;
+}
+
+/* Keep the card above the envelope folds */
+
+.envelope-container.open .envelope-back {
+    z-index: 1;
+}
+
+.envelope-container.open .envelope-front {
+    z-index: 2;
+}
+
+.envelope-container.open .envelope-flap {
+    z-index: 1;
+}
+
+.envelope-container.open .envelope-seal {
+    opacity: 0;
+}
+
+/* First move UP, then move DOWN to the centre */
+
+@keyframes invitationPop {
+
+    /* Card starts inside the envelope */
+    0% {
+        transform: translateY(0) scale(0.95);
+    }
+
+    /* Card pops out and moves upward */
+    45% {
+        transform: translateY(-210px) scale(1);
+    }
+
+    /* Card moves down and settles in the centre */
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Mobile animation */
+
+@media (max-width: 450px) {
+
+    .envelope-container.open .invitation-card {
+        animation: invitationPopMobile 2.2s ease-in-out 0.3s forwards;
+    }
+
+    @keyframes invitationPopMobile {
+
+        0% {
+            transform: translateY(0) scale(0.92);
+        }
+
+        45% {
+            transform: translateY(-165px) scale(0.98);
+        }
+
+        100% {
+            transform: translateY(0) scale(1);
+        }
+    }
+}
+
+
+
+
+
+
+        /* =====================================
+   INCREASE INVITATION CARD HEIGHT
+===================================== */
+
+.invitation-card {
+    height: 340px !important;
+    width: 86%;
+    left: 7%;
+    padding: 12px !important;
+}
+
+/* Increase inner content spacing */
+.card-border {
+    padding: 18px 12px !important;
+}
+
+/* Bride and groom names */
+.invitation-card h1 {
+    font-size: 32px;
+    line-height: 1.1;
+    margin: 4px 0;
+}
+
+/* Top text */
+.card-small-text {
+    font-size: 8px;
+    margin-bottom: 12px;
+}
+
+/* Decorative divider */
+.ornament-divider {
+    margin: 12px 0;
+}
+
+/* Invitation message */
+.card-message {
+    font-size: 7px;
+    line-height: 2;
+}
+
+/* Bottom text */
+.card-bottom-text {
+    margin-top: 12px;
+}
+
+/* Explore button */
+.card-enter {
+    padding: 8px 14px;
+    margin-top: 12px;
+    font-size: 8px;
+}
+
+/* Mobile card height */
+@media (max-width: 450px) {
+    .invitation-card {
+        height: 310px !important;
+        width: 96%;
+        left: 2%;
+        padding: 8px !important;
+    }
+
+    .card-border {
+        padding: 12px 8px !important;
+    }
+
+    .invitation-card h1 {
+        font-size: 27px;
+    }
+
+    .card-small-text {
+        font-size: 7px;
+    }
+
+    .card-message {
+        font-size: 6px;
+    }
+}
+
+        /* Slightly taller invitation card */
+.invitation-card {
+    height: 370px !important;
+}
+
+@media (max-width: 450px) {
+    .invitation-card {
+        height: 340px !important;
+    }
+}
+
+
+
+
+
+
+
+/* FIX: Keep every invitation element inside the border */
+
+.invitation-card {
+    box-sizing: border-box;
+}
+
+.card-border {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* Distribute content within the card */
+    justify-content: space-between;
+
+    padding: 12px 12px !important;
+    overflow: hidden;
+}
+
+/* Top ornament */
+.card-ornament {
+    position: static !important;
+    margin: 0 !important;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+/* Family text */
+.card-small-text {
+    margin: 0 !important;
+    flex-shrink: 0;
+}
+
+/* Names */
+.invitation-card h1 {
+    margin: 0 !important;
+    line-height: 1 !important;
+    flex-shrink: 0;
+}
+
+/* Ampersand */
+.card-ampersand {
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+/* Divider */
+.ornament-divider {
+    margin: 0 !important;
+    flex-shrink: 0;
+}
+
+/* Invitation message */
+.card-message {
+    margin: 0 !important;
+    line-height: 1.7 !important;
+    flex-shrink: 0;
+}
+
+/* Bottom text */
+.card-bottom-text {
+    margin: 0 !important;
+    flex-shrink: 0;
+}
+
+/* Explore button */
+.card-enter {
+    position: static !important;
+    transform: none !important;
+    margin: 0 !important;
+    padding: 7px 12px !important;
+    flex-shrink: 0;
+}
+
+/* Mobile */
+@media (max-width: 450px) {
+    .card-border {
+        padding: 10px 8px !important;
+    }
+
+    .invitation-card h1 {
+        font-size: 27px !important;
+    }
+
+    .card-enter {
+        font-size: 7px;
+        padding: 6px 10px !important;
+    }
+}
+
+
+        .hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding: 100px 20px;
+
+    background:
+        linear-gradient(
+            rgba(248, 245, 238, 0.65),
+            rgba(248, 245, 238, 0.75)
+        ),
+        url("{% static 'images/bg.jfif' %}");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+
+    color: #292720;
+}
+
+.hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(45px, 8vw, 85px);
+    margin-top: 25px;
+}
+
+.hero h1 span {
+    color: #81745f;
+    font-style: italic;
+}
+
+
+
+
+
+        /* Compact Navbar */
+.navbar {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    min-height: 55px;
+}
+
+.navbar-brand {
+    font-size: 20px;
+    padding: 0;
+}
+
+.navbar-nav .nav-link {
+    font-size: 13px;
+    padding: 8px 12px !important;
+}
+
+.navbar-toggler {
+    padding: 4px 7px;
+    font-size: 14px;
+}
+
+
+
+
+        .save-date-section {
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+
+    background:
+        linear-gradient(
+            rgba(30, 25, 20, 0.45),
+            rgba(30, 25, 20, 0.45)
+        ),
+        url("{% static 'images/save.png' %}");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: white;
+}
+
+.save-date-section h3,
+.save-date-section .section-title,
+.save-date-section p {
+    color: white;
+}
+
+
+
+
+        .venue-top-space {
+    height: 70px;
+    background-color: #ffffff;
+}
+
+.venue-section {
+    min-height: 500px;
+    padding: 70px 20px;
+    background:
+        linear-gradient(rgba(30,25,20,.45), rgba(30,25,20,.45)),
+        url("/static/images/venue.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: white;
+}
+
+.venue-section .section-title {
+    color: white;
+    margin-bottom: 45px;
+}
+
+.venue-content {
+    max-width: 550px;
+    margin: auto;
+    padding: 20px;
+    background: transparent;
+    color: white;
+}
+
+.venue-content h3,
+.venue-content p {
+    color: white;
+}
+
+        .couple-symbol {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 50px; /* Increased size */
+    margin: 25px 0;
+    font-style: italic;
+}
+
+
+
+         /* CLOSING MESSAGE */
+
+        .closing-section {
+            text-align: center;
+            padding: 65px 20px;
+            background: var(--ivory);
+        }
+
+        .closing-ornament {
+            font-size: 30px;
+            color: var(--brown);
+            margin-bottom: 15px;
+        }
+
+        .closing-message {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 25px;
+            font-style: italic;
+            color: #625b50;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<!-- BOHEMIAN WEDDING INTRO SCREEN -->
+<div class="envelope-screen" id="envelopeScreen">
+
+    <div class="intro-decoration intro-top">
+        ❧
+    </div>
+
+    <p class="intro-caption">A SPECIAL INVITATION</p>
+
+    <div class="envelope-container" id="envelopeContainer"
+         onclick="openEnvelope()">
+
+        <!-- Invitation card -->
+        <div class="invitation-card">
+
+            <div class="card-border">
+
+                <div class="card-ornament">❧</div>
+
+                <p class="card-small-text">
+                    TOGETHER WITH OUR FAMILIES
+                </p>
+
+                {% if profile %}
+                    <h1>{{ profile.bride_name }}</h1>
+                    <div class="card-ampersand">&</div>
+                    <h1>{{ profile.groom_name }}</h1>
+                {% else %}
+                    <h1>Riya Hajar</h1>
+                    <div class="card-ampersand">&</div>
+                    <h1>Naseem</h1>
+                {% endif %}
+
+                <div class="ornament-divider">
+                    <span></span> ❧ <span></span>
+                </div>
+
+                <p class="card-message">
+                    REQUEST THE PLEASURE OF YOUR COMPANY
+                    <br>
+                    AT THEIR WEDDING CELEBRATION
+                </p>
+
+                <p class="card-bottom-text">WITH LOVE & JOY</p>
+
+                <button class="card-enter"
+                        onclick="event.stopPropagation(); enterWebsite();">
+                    EXPLORE THE INVITATION <span>→</span>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- Envelope -->
+        <div class="envelope-back"></div>
+        <div class="envelope-front"></div>
+        <div class="envelope-flap"></div>
+
+        <!-- Wax seal -->
+        <div class="envelope-seal">❧</div>
+
+    </div>
+
+    <p class="envelope-instruction" id="envelopeInstruction">
+        CLICK THE ENVELOPE TO OPEN
+    </p>
+
+    <div class="intro-decoration intro-bottom">✧</div>
+
+</div>
+
+
+
+
+
+
+
+
+    <!-- Navigation -->
+
+
+    <!-- Home Section -->
+    <section class="hero" id="home">
+        <div class="container">
+
+            <p class="text-uppercase"
+   style="letter-spacing: 4px; font-size: 11px;">
+    Together with our families
+</p>
+
+<div class="couple-details text-center">
+
+    <!-- Bride Details -->
+    <div class="bride-details">
+
+        <p class="parents">
+           Mr. and Mrs. {{ profile.bride_father }} request the honor of your presence at the marriage of their daughter
+        </p>
+        <h1>{{ profile.bride_name }}</h1>
+
+    </div>
+
+    <!-- Between Bride and Groom -->
+<div class="couple-symbol">To</div>
+
+    <!-- Groom Details -->
+    <div class="groom-details">
+        <h1>{{ profile.groom_name }}</h1>
+
+        <p class="parents">
+            S/o Mr. and Mrs. {{ profile.groom_father }}
+        </p>
+
+    </div>
+
+</div>
+
+        </div>
+    </section>
+
+    <!-- Save the Date -->
+    {% if profile %}
+    <section class="section text-center save-date-section">
+        <div class="container">
+            <h2 class="section-title">Save the Date</h2>
+
+            <h3>{{ profile.wedding_date|date:"d F Y" }}</h3>
+            <p class="fs-5">{{ profile.wedding_time|time:"h:i A" }}</p>
+        </div>
+    </section>
+    {% endif %}
+
+<!-- Venue-->
+     {% if profile %}
+<div class="venue-top-space"></div>
+
+<section class="venue-section">
+    <div class="container text-center">
+        <h2 class="section-title">Wedding Venue</h2>
+
+        <div class="venue-content">
+            <h3>{{ profile.venue_name }}</h3>
+            <p>{{ profile.venue_address }}</p>
+
+            {% if profile.google_maps_url %}
+                <a href="{{ profile.google_maps_url }}"
+                   target="_blank"
+                   class="btn-wedding mt-3">
+                    View Location on Google Maps
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+    {% endif %}
+
+
+    <!-- Gallery Section -->
+    <section class="section" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Our Gallery</h2>
+
+            <div class="row g-4">
+
+                {% for item in gallery_images %}
+                    <div class="col-md-4 col-sm-6">
+                        <div>
+                            <img src="{{ item.image.url }}"
+                                 class="gallery-img"
+                                 alt="{{ item.caption }}">
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="col-12 text-center">
+                        <p>No gallery images have been added yet.</p>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+<section class="closing-section">
+
+        <div class="closing-ornament">
+            ❧
+        </div>
+
+        <p class="closing-message">
+            Looking forward to celebrating this special day
+            <br>
+            with your presence and blessings.
+        </p>
+
+        <div class="ornament-divider">
+            <span></span>
+            ✧
+            <span></span>
+        </div>
+
+    </section>
+
+    <!-- Venue Section -->
+
+
+    <footer>
+
+        <p class="footer-small">
+            Made with love
+        </p>
+
+        <p>♡</p>
+
+        {% if profile %}
+
+            <p>
+                {{ profile.bride_name }} & {{ profile.groom_name }}
+            </p>
+
+        {% endif %}
+
+        <p class="footer-small">
+            A celebration of love and togetherness
+        </p>
+
+    </footer>
+
+    <script>
+
+let envelopeOpened = false;
+
+function openEnvelope() {
+
+    if (envelopeOpened) {
+        return;
+    }
+
+    envelopeOpened = true;
+
+    document.getElementById("envelopeContainer")
+        .classList.add("open");
+
+    document.getElementById("envelopeInstruction")
+        .innerText = "YOUR INVITATION AWAITS";
+}
+
+function enterWebsite() {
+
+    if (!envelopeOpened) {
+        return;
+    }
+
+    document.getElementById("envelopeScreen")
+        .classList.add("hide-screen");
+}
+
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
