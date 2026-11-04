@@ -1,0 +1,50 @@
+[
+{
+  "model": "weddingApp.weddingprofile",
+  "pk": 1,
+  "fields": {
+    "bride_name": "Riya Hajar",
+    "groom_name": "Naseem",
+    "bride_father": "Abooty",
+    "bride_mother": "Sainaba",
+    "bride_address": "'Riyamahal', Neerveli",
+    "groom_father": "Hallalath",
+    "groom_mother": "Sameera",
+    "groom_address": "Dua Manzil, Kanderi",
+    "wedding_date": "2026-11-22",
+    "wedding_time": "12:00:00",
+    "venue_name": "RIYAMAHAL",
+    "venue_address": "Neerveli, Kannur, Kerala",
+    "google_maps_url": "https://maps.app.goo.gl/g9umaqYgF8nsh6ET6",
+    "invitation_message": "Together with our families, we cordially invite you to celebrate our wedding.",
+    "story_intro": ""
+  }
+},
+{
+  "model": "weddingApp.galleryimage",
+  "pk": 8,
+  "fields": {
+    "image": "gallery/IMG-20261103-WA0067.jpg",
+    "caption": "face to face",
+    "order": 1
+  }
+},
+{
+  "model": "weddingApp.galleryimage",
+  "pk": 9,
+  "fields": {
+    "image": "gallery/IMG-20261103-WA0069.jpg",
+    "caption": "yellow",
+    "order": 2
+  }
+},
+{
+  "model": "weddingApp.galleryimage",
+  "pk": 10,
+  "fields": {
+    "image": "gallery/IMG-20261103-WA0068_4BgnLrO.jpg",
+    "caption": "standing",
+    "order": 3
+  }
+}
+]
